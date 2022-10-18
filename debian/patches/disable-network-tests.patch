@@ -1,0 +1,82 @@
+From: Matthias Klose <doko@ubuntu.com>
+Date: Wed, 17 Nov 2021 01:26:47 +0100
+Subject: Disable the tests accessing the network
+
+Origin: vendor
+Forwarded: not-needed
+---
+ spec/lib/http/client_spec.rb | 10 +++++-----
+ spec/lib/http_spec.rb        |  8 ++++----
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/spec/lib/http/client_spec.rb b/spec/lib/http/client_spec.rb
+index 36f277c..592ad8f 100644
+--- a/spec/lib/http/client_spec.rb
++++ b/spec/lib/http/client_spec.rb
+@@ -88,7 +88,7 @@ RSpec.describe HTTP::Client do
+     end
+ 
+     context "with non-ASCII URLs" do
+-      it "theoretically works like a charm" do
++      xit "theoretically works like a charm" do
+         client = StubbedClient.new(:follow => true).stub(
+           "http://example.com/"      => redirect_response("/könig"),
+           "http://example.com/könig" => simple_response("OK")
+@@ -97,7 +97,7 @@ RSpec.describe HTTP::Client do
+         expect { client.get "http://example.com/könig" }.not_to raise_error
+       end
+ 
+-      it "works like a charm in real world" do
++      xit "works like a charm in real world" do
+         expect(HTTP.follow.get("https://bit.ly/2UaBT4R").parse(:json)).
+           to include("url" => "https://httpbin.org/anything/könig")
+       end
+@@ -222,12 +222,12 @@ RSpec.describe HTTP::Client do
+ 
+   describe "#request" do
+     context "with non-ASCII URLs" do
+-      it "theoretically works like a charm" do
++      xit "theoretically works like a charm" do
+         client = described_class.new
+         expect { client.get "#{dummy.endpoint}/könig" }.not_to raise_error
+       end
+ 
+-      it "works like a charm in real world" do
++      xit "works like a charm in real world" do
+         url = "https://httpbin.org/anything/ö無"
+ 
+         expect(HTTP.follow.get(url).parse(:json)).to include("url" => url)
+@@ -238,7 +238,7 @@ RSpec.describe HTTP::Client do
+       let(:headers) { {"Host" => "another.example.com"} }
+       let(:client)  { described_class.new :headers => headers }
+ 
+-      it "keeps `Host` header as is" do
++      xit "keeps `Host` header as is" do
+         expect(client).to receive(:perform) do |req, _|
+           expect(req["Host"]).to eq "another.example.com"
+         end
+diff --git a/spec/lib/http_spec.rb b/spec/lib/http_spec.rb
+index da0c17e..92c5a07 100644
+--- a/spec/lib/http_spec.rb
++++ b/spec/lib/http_spec.rb
+@@ -257,16 +257,16 @@ RSpec.describe HTTP do
+ 
+     context "with host only given" do
+       subject { HTTP.persistent host }
+-      it { is_expected.to be_an HTTP::Client }
+-      it { is_expected.to be_persistent }
++      xit { is_expected.to be_an HTTP::Client }
++      xit { is_expected.to be_persistent }
+     end
+ 
+     context "with host and block given" do
+-      it "returns last evaluation of last expression" do
++      xit "returns last evaluation of last expression" do
+         expect(HTTP.persistent(host) { :http }).to be :http
+       end
+ 
+-      it "auto-closes connection" do
++      xit "auto-closes connection" do
+         HTTP.persistent host do |client|
+           expect(client).to receive(:close).and_call_original
+           client.get("/repos/httprb/http.rb")

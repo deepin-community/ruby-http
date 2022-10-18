@@ -1,0 +1,42 @@
+Source: ruby-http
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Pirate Praveen <praveen@debian.org>,
+           Utkarsh Gupta <utkarsh@debian.org>
+Section: ruby
+Testsuite: autopkgtest-pkg-ruby
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               gem2deb,
+               ruby-addressable,
+               ruby-certificate-authority,
+               ruby-coveralls,
+               ruby-http-cookie,
+               ruby-http-form-data (>= 2.2~),
+               ruby-http-parser,
+               ruby-rspec,
+               ruby-rspec-its,
+               ruby-simplecov,
+               ruby-webrick (>= 1.7~)
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-http
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-http.git
+Homepage: https://github.com/httprb/http
+Rules-Requires-Root: no
+XS-Ruby-Versions: all
+
+Package: ruby-http
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby-addressable,
+         ruby-http-cookie,
+         ruby-http-form-data (>= 2.2~),
+         ruby-http-parser,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: ruby-twitter (<< 7.0)
+Description: easy-to-use client library for making http requests from Ruby
+ It uses a simple method chaining system for building requests, similar
+ to Python's Requests
+ .
+ Under the hood, The HTTP Gem uses http_parser.rb, a fast HTTP parsing
+ native extension based on the Node.js parser and a Java port thereof.

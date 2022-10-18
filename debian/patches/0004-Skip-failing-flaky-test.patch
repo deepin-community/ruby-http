@@ -1,0 +1,32 @@
+From: Lucas Kanashiro <kanashiro@ubuntu.com>
+Date: Wed, 1 Jul 2020 15:16:29 -0300
+Subject: Skip failing flaky test
+
+This test fails when autopkgtest is executed with qemu backend, however,
+it passes when lxc/lxd backend is used. Since upstream already flag it
+as flaky this patch let it be skipped.
+
+This issue was reported upstream here:
+
+https://github.com/httprb/http/issues/615
+
+Forwarded: not-needed
+Author: Lucas Kanashiro <kanashiro@debian.org>
+Last-Updated: 2020-07-01
+---
+ spec/support/http_handling_shared.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spec/support/http_handling_shared.rb b/spec/support/http_handling_shared.rb
+index ce8c7ff..c695bb0 100644
+--- a/spec/support/http_handling_shared.rb
++++ b/spec/support/http_handling_shared.rb
+@@ -44,7 +44,7 @@ RSpec.shared_context "HTTP handling" do
+       context "of 0" do
+         let(:read_timeout) { 0 }
+ 
+-        it "times out", :flaky do
++        xit "times out", :flaky do
+           expect { response }.to raise_error(HTTP::TimeoutError, /Read/i)
+         end
+       end

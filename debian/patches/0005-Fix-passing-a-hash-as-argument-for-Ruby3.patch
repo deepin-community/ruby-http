@@ -1,0 +1,23 @@
+From: =?utf-8?q?C=C3=A9dric_Boutillier?= <boutil@debian.org>
+Date: Wed, 17 Nov 2021 01:28:01 +0100
+Subject: Fix passing a hash as argument for Ruby3
+Origin: https://github.com/httprb/http/commit/f4fb3369d030520e981eb891fb5dd25f8e0403d2
+Applied-Upstream: yes
+
+---
+ spec/lib/http/client_spec.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spec/lib/http/client_spec.rb b/spec/lib/http/client_spec.rb
+index ceb8772..be354ac 100644
+--- a/spec/lib/http/client_spec.rb
++++ b/spec/lib/http/client_spec.rb
+@@ -193,7 +193,7 @@ RSpec.describe HTTP::Client do
+     context "when passing an HTTP::FormData object directly" do
+       it "creates url encoded form data object" do
+         client    = HTTP::Client.new
+-        form_data = HTTP::FormData::Multipart.new(:foo => "bar")
++        form_data = HTTP::FormData::Multipart.new({:foo => "bar"})
+ 
+         allow(client).to receive(:perform)
+ 

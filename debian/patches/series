@@ -1,0 +1,5 @@
+disable-network-tests.patch
+add-missing-x509v3-extensions-in-spec
+disable-ssl-tests.patch
+0004-Skip-failing-flaky-test.patch
+0005-Fix-passing-a-hash-as-argument-for-Ruby3.patch

@@ -1,0 +1,176 @@
+ruby-http (4.4.1-5) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Update watch file format version to 4.
+
+  [ Cédric Boutillier ]
+  * Update team name
+  * Add .gitattributes to keep unwanted files out of the source package
+  * Build-depend on ruby-webrick (Closes: #996292)
+  * Bump standards-version to 4.6.0 (no changes needed)
+  * Bump debhelper-compat to 13
+  * Add 0005-Fix-passing-a-hash-as-argument-for-Ruby3.patch to fix deprecated
+    syntax in spec with ruby3.0
+
+ -- Cédric Boutillier <boutil@debian.org>  Wed, 17 Nov 2021 01:37:24 +0100
+
+ruby-http (4.4.1-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Lucas Kanashiro ]
+  * Add patch to skip flaky test failure
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Wed, 01 Jul 2020 15:22:19 -0300
+
+ruby-http (4.4.1-3) unstable; urgency=medium
+
+  * Replace pending with xcontext and re-enable the previously
+    disabled test in 4.4.1-2 upload
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Fri, 10 Apr 2020 05:05:38 +0530
+
+ruby-http (4.4.1-2) unstable; urgency=medium
+
+  * Add another test to the existing patch
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Fri, 10 Apr 2020 04:42:13 +0530
+
+ruby-http (4.4.1-1) unstable; urgency=medium
+
+  * New upstream version 4.4.1
+    - Fixes test failures (Closes: #890075)
+  * Replace ruby-http-parser.rb with ruby-http-parser
+  * Tighten dependency on ruby-http-form-data
+  * Remove unnecessary Breaks
+  * Refresh d/patches
+    - Don't access internet during build (Closes: #858140)
+  * Re-enable tests
+  * Fix package wrt cme
+  * Drop runtime dependency on ruby interpreter
+  * Add myself as an uploader
+  * Add salsa-ci.yml
+  * Add Breaks for ruby-twitter
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Fri, 10 Apr 2020 02:54:16 +0530
+
+ruby-http (3.3.0-2) unstable; urgency=medium
+
+  [ Utkarsh Gupta ]
+  * Team upload
+  * Reupload to unstable
+  * Bump Standards-Version to 4.3.0 (no changes needed)
+
+  [ Pirate Praveen ]
+  * Add breaks for ruby-twitter and ruby-kubeclient looking for ruby-http 2.x
+
+ -- Utkarsh Gupta <guptautkarsh2102@gmail.com>  Thu, 07 Feb 2019 15:28:50 +0530
+
+ruby-http (3.3.0-1) experimental; urgency=medium
+
+  [ Manas kashyap ]
+  * New upstream release 3.3.0
+  * Watch file updated to use gemwatch.debian.net
+  * Minimum ruby-http-form-data version updated
+
+  [ Pirate Praveen ]
+  * Refresh packaging with dh-make-ruby -w
+  * Add Rules-Requires-Root: no and update homepage
+  * Bump Standards-Version to 4.2.1 (no changes needed)
+  * Refresh patches
+  * Disable tests using SSL (Started failing with openssl 1.1)
+  * Remove debian/ruby-http.examples (Examples are no longer present)
+
+ -- Pirate Praveen <praveen@debian.org>  Sat, 22 Dec 2018 22:12:34 +0530
+
+ruby-http (2.2.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Pirate Praveen <praveen@debian.org>  Thu, 27 Jul 2017 15:51:18 +0530
+
+ruby-http (1.0.2-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Micah Anderson ]
+  * Add missing x509v3 extenions to certs generated for tests
+    (Closes: #848757)
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Mon, 23 Jan 2017 00:52:40 +0000
+
+ruby-http (1.0.2-3) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Cédric Boutillier ]
+  * Run wrap-and-sort on packaging files
+  * Standards-Version set to 3.9.8 (no changes needed)
+
+  [ Christian Hofstaedtler ]
+  * Disable tests using network (Closes: #818460)
+    Thanks to Matthias Klose <doko@debian.org> for the initial patch.
+
+ -- Cédric Boutillier <boutil@debian.org>  Mon, 06 Jun 2016 17:57:37 +0200
+
+ruby-http (1.0.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * Rebuild to send package to unstable.
+
+ -- Sebastien Badia <seb@sebian.fr>  Thu, 03 Mar 2016 17:24:57 -0300
+
+ruby-http (1.0.2-1) experimental; urgency=medium
+
+  * Team upload
+
+  [ Jonas Genannt ]
+  * bumped up compat version to 9
+
+  [ Sebastien Badia ]
+  * docs: Add readme file as package documentation
+  * refreshed patch: removing_simplecov_html
+  * examples: Ship examples files
+  * d/control:
+      Add new dependencies
+      Switch from gitweb to cgit for vcs-browser URL
+      Update Vcs-* fields (switch to https)
+      Bump Standards-Version to 3.9.7 (no changes)
+      Add new BD packages (rspec-its and certificate-authority)
+  * Imported Upstream version 1.0.2 (Closes: #795752)
+  * Update homepage URL (according new release)
+  * Update Debian packaging using dh-make-ruby
+
+ -- Sebastien Badia <seb@sebian.fr>  Wed, 02 Mar 2016 15:16:35 -0300
+
+ruby-http (0.6.2-1) experimental; urgency=low
+
+  * Team upload
+  * New upstream version
+  * Updated and refreshed removing_simplecov_html.patch
+  * Bump gem2deb dependency to 0.10
+  * Updated d/ruby-test.rake to run tests
+  * Bump standards to 3.9.6 (no change)
+  * Updated copyright as lib/http/uri_backport.rb was removed by upstream
+
+ -- Nitesh A Jain <niteshjain92@gmail.com>  Sat, 25 Oct 2014 01:25:33 +0530
+
+ruby-http (0.6.1-1) unstable; urgency=low
+
+  * Team upload
+  * New upstream version
+  * Added removing_simplecov_html.patch to fix failing tests
+
+ -- Nitesh A Jain <niteshjain92@gmail.com>  Fri, 30 May 2014 23:21:11 +0530
+
+ruby-http (0.5.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #743475)
+
+ -- Pirate Praveen <praveen@debian.org>  Wed, 02 Apr 2014 20:44:16 +0530

@@ -1,0 +1,47 @@
+From: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Date: Wed, 17 Nov 2021 01:26:47 +0100
+Subject: Disable ssl tests
+
+It was working before openssl 1.1
+
+Bug, upstream: https://github.com/httprb/http/issues/465
+---
+ spec/lib/http/client_spec.rb | 2 +-
+ spec/lib/http_spec.rb        | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/spec/lib/http/client_spec.rb b/spec/lib/http/client_spec.rb
+index 592ad8f..ceb8772 100644
+--- a/spec/lib/http/client_spec.rb
++++ b/spec/lib/http/client_spec.rb
+@@ -288,7 +288,7 @@ RSpec.describe HTTP::Client do
+     let(:client)  { described_class.new(options.merge(extra_options)) }
+   end
+ 
+-  describe "working with SSL" do
++  xdescribe "working with SSL" do
+     run_server(:dummy_ssl) { DummyServer.new(:ssl => true) }
+ 
+     let(:extra_options) { {} }
+diff --git a/spec/lib/http_spec.rb b/spec/lib/http_spec.rb
+index 92c5a07..46d83b2 100644
+--- a/spec/lib/http_spec.rb
++++ b/spec/lib/http_spec.rb
+@@ -95,7 +95,7 @@ RSpec.describe HTTP do
+         expect(response.to_s).to match(/<!doctype html>/)
+       end
+ 
+-      context "ssl" do
++      xcontext "ssl" do
+         it "responds with the endpoint's body" do
+           response = ssl_client.via(proxy.addr, proxy.port).get dummy_ssl.endpoint
+           expect(response.to_s).to match(/<!doctype html>/)
+@@ -131,7 +131,7 @@ RSpec.describe HTTP do
+         expect(response.status).to eq(407)
+       end
+ 
+-      context "ssl" do
++      xcontext "ssl" do
+         it "responds with the endpoint's body" do
+           response = ssl_client.via(proxy.addr, proxy.port, "username", "password").get dummy_ssl.endpoint
+           expect(response.to_s).to match(/<!doctype html>/)
